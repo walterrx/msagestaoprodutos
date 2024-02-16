@@ -24,6 +24,7 @@ public class ProdutoService {
 
     public ProdutoDTO createProduto(ProdutoDTO produtoDTO) {
         Produto produto = produtoMapper.produtoDTOToProduto(produtoDTO);
+        produto.validarProduto();
         produto = produtoRepository.save(produto);
         return produtoMapper.produtoToProdutoDTO(produto);
     }

@@ -51,4 +51,17 @@ public class Produto {
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
+
+    // Regras de Negócio
+    public void validarProduto() {
+        if (preco == null) {
+            throw new IllegalArgumentException("O preço do produto não pode ser nulo.");
+        }
+        if (preco.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("O preço do produto não pode ser negativo.");
+        }
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("O nome do produto não pode estar vazio.");
+        }
+    }
 }
